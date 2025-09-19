@@ -1,10 +1,11 @@
+![CLI Render](assets/example.png)
 # PressProof
 PressProof is a command-line tool proofreading pressbook books. Given the a starting page URL, pressbook automatically crawls through each consecutive page, extracting text and identifying errors using an LLM of choice (Restricted to OpenAI). Results are logged in realtime to a log file containing each error, the reason it was flagged, and their solutions!
 
 ## Installation & Configuration
 Assuming you have python installed, run:
 ```
-pip install git+123123
+pip install git+https://github.com/Slynyr/pressbook-checker.git
 ```
 
 PressProof makes use of the OpenAI API so you will need to set a ```OPENAI_API_KEY``` environment variable in order to use the tool. You can set a temporary environment variable for the terminal session as follow:
