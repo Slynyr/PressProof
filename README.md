@@ -37,7 +37,7 @@ Pressproof generates a log file in the current working directory on the fly, whi
 Error: <Original Text> | Issue : <Explenation and Solution to error>
 ```
 
-## Known Issues 
+## Known Issues
 - False Positives: Inline styling in some text books can cause the LLM to incorrectly identify errors with regards to extra or missing spaces
 
 ## Risk Notice ⚠️
