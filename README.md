@@ -37,13 +37,14 @@ Pressproof generates a log file in the current working directory on the fly, whi
 Error: <Original Text> | Issue : <Explenation and Solution to error>
 ```
 
-#### Example Output
-```
-tbd
-```
+## Known Issues 
+- False Positives: Inline styling in some text books can cause the LLM to incorrectly identify errors with regards to extra or missing spaces
 
 ## Risk Notice ⚠️
 PressProof makes use of web scraping in order to pull information from each page. While Pressbook does not explicitely prohibit web scraping in their terms of service, site policies may change, and access could be restricted at any time. 
 
-Use this tool at your own risk. The author takes no responsibility for any consequences of its use. 
+
+<div style="text-align: center; max-width: 40vw; margin: 0 auto">Use this tool at your own risk. 
+The author takes no responsibility for any consequences of its use.
+</div>
 
