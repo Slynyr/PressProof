@@ -1,0 +1,2 @@
+[console_scripts]
+pressproof = pressproof.__main__:mainEntryPoint

@@ -1,0 +1,14 @@
+README.md
+setup.py
+PressProof.egg-info/PKG-INFO
+PressProof.egg-info/SOURCES.txt
+PressProof.egg-info/dependency_links.txt
+PressProof.egg-info/entry_points.txt
+PressProof.egg-info/requires.txt
+PressProof.egg-info/top_level.txt
+pressproof/__init__.py
+pressproof/__main__.py
+pressproof/argsHandler.py
+pressproof/llmHandler.py
+pressproof/logManager.py
+pressproof/scraper.py
