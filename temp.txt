@@ -1,0 +1,19 @@
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: the 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: such as geocities and tripod allowed led to a proliferation of personal web pages. | Issue: Incorrect capitalization of 'geocities'; should be 'Geocities'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites'.
+Error: The term Mobile First Design was coined in 2009 | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive web design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: But the importance of JavaScript continues to grow, with the popularity of Node.js and the REACT web development framework | Issue: Inconsistent capitalization of 'REACT'; should be 'React'.
+Error: You may also have heard talk of Web 3 or Web 3.0 | Issue: Inconsistent capitalization of 'Web 3'; should be 'web 3'.
+======================================================================================================================================================
+| Get Your Own Web Server – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/get-your-own-web-server/ |
+Error: Relate your machine’s local file structure to a the structure of a URL. | Issue: Incorrect article usage ('a the' should be 'the')
+Error: On a windows computer, you’ll probably find this in C:/xampp/htdocs, or wherever you installed XAMPP. | Issue: Incorrect capitalization ('windows' should be 'Windows')
+Error: ``` <!doctype html> <html> <head> <meta charset=utf-8> <title>Hello!</title> </head> <body> <p>Hello, World!</p> </body> </html> ``` | Issue: Incorrect doctype declaration ('<!doctype html>' should be '<!DOCTYPE html>')

@@ -1,8 +1,12 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 
-with open("README.md", "r") as f: 
-    description = f.read()
-    description.replace("assets/example.png", "https://github.com/Slynyr/PressProof/raw/main/assets/example.png")
+readme_path = Path(__file__).with_name("README.md")
+description = readme_path.read_text(encoding="utf-8")
+description = description.replace(
+    "assets/example.png",
+    "https://github.com/Slynyr/PressProof/raw/main/assets/example.png"
+)
 
 setup(
     name="PressProof",
