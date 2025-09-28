@@ -6,9 +6,9 @@ import atexit
 import signal
 import re
 from colorama import Fore, Style, just_fix_windows_console
+from .constants import Constants
 
 _ANSI_RE = re.compile(r'\x1b\[[0-9;?]*[ -/]*[@-~]')
-ORANGE = "\033[38;2;255;111;60m"
 
 def _visible_len(s: str) -> int:
     return len(_ANSI_RE.sub('', s))
@@ -76,7 +76,7 @@ class StatusBar:
         return handler
 
     def _render_line(self, frame: str) -> str:
-        return f"{ORANGE}\033[1m{frame}\033[0m{Fore.WHITE} {self._text}{Style.RESET_ALL}"
+        return f"{Constants.COLOR_ORANGE}\033[1m{frame}\033[0m{Fore.WHITE} {self._text}{Style.RESET_ALL}"
 
     def _loop(self):
         for frame in itertools.cycle(self.frames):

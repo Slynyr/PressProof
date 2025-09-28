@@ -9,6 +9,7 @@ PressProof.egg-info/top_level.txt
 pressproof/__init__.py
 pressproof/__main__.py
 pressproof/argsHandler.py
+pressproof/constants.py
 pressproof/llmHandler.py
 pressproof/logManager.py
 pressproof/scraper.py

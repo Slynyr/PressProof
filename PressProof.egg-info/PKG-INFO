@@ -1,14 +1,11 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.1
 Name: PressProof
 Version: 1.1.2
+Summary: UNKNOWN
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
 Description-Content-Type: text/markdown
-Requires-Dist: colorama
-Requires-Dist: openai
-Requires-Dist: beautifulsoup4
-Requires-Dist: requests
-Dynamic: description
-Dynamic: description-content-type
-Dynamic: requires-dist
 
 ![CLI Render](https://github.com/Slynyr/PressProof/raw/main/assets/example.png)
 # PressProof
@@ -59,4 +56,6 @@ PressProof makes use of web scraping in order to pull information from each page
 <div style="text-align: center; max-width: 40vw; margin: 0 auto">Use this tool at your own risk. 
 The author takes no responsibility for any consequences of its use.
 </div>
+
+
 

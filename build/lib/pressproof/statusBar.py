@@ -6,9 +6,9 @@ import atexit
 import signal
 import re
 from colorama import Fore, Style, just_fix_windows_console
+from .constants import Constants
 
 _ANSI_RE = re.compile(r'\x1b\[[0-9;?]*[ -/]*[@-~]')
-ORANGE = "\033[38;2;255;111;60m"
 
 def _visible_len(s: str) -> int:
     return len(_ANSI_RE.sub('', s))
@@ -25,6 +25,7 @@ class StatusBar:
         self._prev_vis_len = 0
         self._started = False
         just_fix_windows_console()
+
         # Ensure cursor shows on process exit.
         atexit.register(self._show_cursor)
 
@@ -75,8 +76,7 @@ class StatusBar:
         return handler
 
     def _render_line(self, frame: str) -> str:
-        # Bold spinner, cyan; text white; reset style at end.
-        return f"{ORANGE}\033[1m{frame}\033[0m{Fore.WHITE} {self._text}{Style.RESET_ALL}"
+        return f"{Constants.COLOR_ORANGE}\033[1m{frame}\033[0m{Fore.WHITE} {self._text}{Style.RESET_ALL}"
 
     def _loop(self):
         for frame in itertools.cycle(self.frames):
@@ -86,11 +86,9 @@ class StatusBar:
                 line = self._render_line(frame)
                 vis_len = _visible_len(line)
 
-            # No full clear; just carriage return and overwrite.
             sys.stdout.write("\r")
             sys.stdout.write(line)
 
-            # If shorter than before, pad to cover leftover chars.
             if vis_len < self._prev_vis_len:
                 sys.stdout.write(" " * (self._prev_vis_len - vis_len))
                 # Move back to end of new content (optional; we already wrote it).
@@ -106,30 +104,26 @@ class StatusBar:
             self._text = text
 
     def print_above(self, msg):
-        # Clear the status line, print the message, then redraw status line on next tick.
         self._erase_line()
         print(msg)
-        # Force an immediate redraw so the status bar reappears right away.
+        
         if self._thread and self._thread.is_alive():
             with self._lock:
                 line = self._render_line(self.frames[0])
-                self._prev_vis_len = 0  # ensure clean overwrite
+                self._prev_vis_len = 0  
             sys.stdout.write("\r" + line)
             sys.stdout.flush()
             self._prev_vis_len = _visible_len(line)
 
     def stop(self, final_text=None):
-        # Stop animation thread if running.
         if self._thread and self._thread.is_alive():
             self._stop.set()
             self._thread.join(timeout=0.5)
 
-        # Replace spinner with final text if provided.
         if final_text is not None:
             self._erase_line()
             print(final_text)
 
-        # Clean up the line + cursor.
         self._erase_line()
         self._show_cursor()
         with self._lock:
