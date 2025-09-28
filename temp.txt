@@ -17,3 +17,108 @@ Error: You may also have heard talk of Web 3 or Web 3.0 | Issue: Inconsistent ca
 Error: Relate your machine’s local file structure to a the structure of a URL. | Issue: Incorrect article usage ('a the' should be 'the')
 Error: On a windows computer, you’ll probably find this in C:/xampp/htdocs, or wherever you installed XAMPP. | Issue: Incorrect capitalization ('windows' should be 'Windows')
 Error: ``` <!doctype html> <html> <head> <meta charset=utf-8> <title>Hello!</title> </head> <body> <p>Hello, World!</p> </body> </html> ``` | Issue: Incorrect doctype declaration ('<!doctype html>' should be '<!DOCTYPE html>')
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: A popular animation of Duke, the Java mascot, slowly tumbling across web pages that used to be static blew everyone away | Issue: Sentence structure is awkward; consider rephrasing for clarity.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites.'; should be removed.
+Error: The term Mobile First Design was coined in 2009 to popularize the idea of designing with mobile users in mind. | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First Design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: PHP remains the most used language on the server side of the world’s web sites | Issue: Inconsistent use of apostrophe in 'world’s'; should be 'worlds'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: such as geocities and tripod allowed led to a proliferation of personal web pages. | Issue: Redundant wording 'allowed led'; should be corrected to 'allowed'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Redundant word 'sites' at the end of the sentence.
+Error: The term Mobile First Design was coined in 2009 | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive web design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: But the importance of JavaScript continues to grow, with the popularity of Node.js and the REACT web development framework | Issue: Inconsistent capitalization of 'REACT'; should be 'React'.
+Error: You may also have heard talk of Web 3 or Web 3.0 | Issue: Inconsistent capitalization of 'Web 3'; should be 'web 3'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: A popular animation of Duke, the Java mascot, slowly tumbling across web pages that used to be static blew everyone away | Issue: Sentence structure is awkward; consider rephrasing for clarity.
+Error: the term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites.'
+Error: The term Mobile First Design was coined in 2009 to popularize the idea of designing with mobile users in mind. | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 to popularize the use of CSS3 Media Queries | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive web design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: But the importance of JavaScript continues to grow, with the popularity of Node.js and the REACT web development framework | Issue: Inconsistent capitalization of 'REACT'; should be 'React'.
+Error: You may also have heard talk of Web 3 or Web 3.0, a new approach to web app architecture based on decentralization, crypto-currencies, blockchain, etc. | Issue: Inconsistent hyphenation in 'crypto-currencies'; should be 'cryptocurrencies'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: such as geocities and tripod allowed led to a proliferation of personal web pages. | Issue: Incorrect capitalization of 'geocities'; should be 'Geocities'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites'.
+Error: The term Mobile First Design was coined in 2009 to popularize the idea of designing with mobile users in mind. | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile-First Design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: PHP remains the most used language on the server side of the world’s web sites | Issue: Inconsistent use of apostrophe in 'world’s'; should be 'worlds'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: A popular animation of Duke, the Java mascot, slowly tumbling across web pages that used to be static blew everyone away | Issue: Sentence structure is awkward; consider rephrasing for clarity.
+Error: the term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites.'; should be removed.
+Error: The term Mobile First Design was coined in 2009 | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive web design'.
+Error: The web continues to evolve today, although the pace of new development of HTML, CSS, and JavaScript has slowed and stabilized somewhat. | Issue: Awkward phrasing; consider rephrasing for clarity.
+Error: The most recent major update to PHP was version 8, released in 2020. | Issue: Inconsistent use of versioning format; should specify 'PHP 8'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: Web page hosting services such as geocities and tripod allowed led to a proliferation of personal web pages. | Issue: Redundant wording 'allowed led'; should be corrected to 'led to'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Redundant word 'sites' at the end of the sentence.
+Error: The term Mobile First Design was coined in 2009 to popularize the idea of designing with mobile users in mind. | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 to popularize the use of CSS3 Media Queries | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'responsive web design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: But the importance of JavaScript continues to grow, with the popularity of Node.js and the REACT web development framework | Issue: Inconsistent capitalization of 'REACT'; should be 'React'.
+Error: You may also have heard talk of Web 3 or Web 3.0, a new approach to web app architecture based on decentralization, crypto-currencies, blockchain, etc. | Issue: Inconsistent hyphenation in 'crypto-currencies'; should be 'cryptocurrencies'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: the 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: such as geocities and tripod allowed led to a proliferation | Issue: Redundant word 'allowed'; should be 'such as Geocities and Tripod, which led to a proliferation'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Redundant word 'sites'; should be removed.
+Error: The term Mobile First Design was coined in 2009 | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First Design'.
+Error: The term Responsive Web Design was coined in 2011 | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive Web Design'.
+Error: The most recent major update to PHP was version 8, released in 2020. | Issue: Inconsistent capitalization of 'PHP'; should be 'PHP'.
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: such as geocities and tripod allowed led to a proliferation of personal web pages. | Issue: Incorrect capitalization of 'geocities'; should be 'Geocities'.
+Error: The term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites'; should be removed.
+Error: The term Mobile First Design was coined in 2009 | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile-First Design'.
+Error: The term Responsive Web Design was coined in 2011 | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive Web Design'.
+Error: The latest major update to JavaScript was in 2015, introducing the Fetch API for AJAX as an alternative for XMLHttpRequest | Issue: Inconsistent capitalization of 'XMLHttpRequest'; should be 'XMLHttpRequest'.
+Error: But the importance of JavaScript continues to grow, with the popularity of Node.js and the REACT web development framework | Issue: Inconsistent capitalization of 'REACT'; should be 'React'.
+Error: You may also have heard talk of Web 3 or Web 3.0 | Issue: Inconsistent capitalization of 'Web 3'; should be 'Web3' or 'Web 3.0'.

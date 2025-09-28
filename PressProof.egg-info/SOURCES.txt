@@ -12,3 +12,4 @@ pressproof/argsHandler.py
 pressproof/llmHandler.py
 pressproof/logManager.py
 pressproof/scraper.py
+pressproof/statusBar.py

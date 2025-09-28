@@ -27,15 +27,15 @@ def _text_from_dom(root: Tag) -> str:
 
         is_block = node.name in BLOCK_LIKE
 
-        # Add a paragraph separator before entering a block (but avoid doubling)
+        # Add a paragraph separator before entering a block
         if is_block and parts and not parts[-1].endswith("\n\n"):
             parts.append("\n\n")
 
         if node.name == "code":
-            # Keep inline code text; you can wrap in backticks to protect spacing later
+            # Keep inline code text
             parts.append(f"`{node.get_text()}`")
         elif node.name == "pre":
-            # Preserve preformatted text exactly (optionally fenced)
+            # Preserve preformatted text exactly
             parts.append("```\n" + node.get_text() + "\n```")
         else:
             for child in node.children:
@@ -48,32 +48,33 @@ def _text_from_dom(root: Tag) -> str:
     walk(root)
     text = "".join(parts)
 
-    # Collapse 3+ newlines to 2 here, leave fine-grained reflow to _reflow()
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
 def _reflow(raw: str) -> str:
     t = unicodedata.normalize("NFKC", raw)
-    t = t.replace("\u00A0", " ").replace("\uFFFD", "")
-    t = t.replace("\r\n", "\n").replace("\r", "\n")
+    t = t.replace('\u00A0', ' ').replace('\uFFFD', '')
+    t = t.replace('\r\n', '\n').replace('\r', '\n')
 
     # Trim trailing spaces on lines
     t = re.sub(r'[ \t]+\n', '\n', t)
 
-    # Normalize paragraph breaks (keep double newlines as paragraphs)
+    # Normalize paragraph breaks
     t = re.sub(r'\n{3,}', '\n\n', t)
 
     # Mark single newlines between nonblank chars as soft wraps
     t = re.sub(r'([^\n])\n(?!\n)([^\n])', rf'\1{WRAP}\2', t)
 
-    # ---- boundary-aware punctuation hugging (SAFE) ----
     # If punctuation follows immediately after a wrap boundary, drop the space.
-    t = re.sub(rf'{WRAP_ESC}\s+([.,;:!?%)\]\}}])', r'\1', t)  # note: '}}' here
+    t = re.sub(rf'{WRAP_ESC}\s+([.,;:!?%)\]\}}])', r'\1', t)
+
     t = re.sub(rf';{WRAP_ESC}\s+\.', ';.', t)
+
     t = re.sub(rf'`\s*{WRAP_ESC}\s*([.,;:!?])', r'`\1', t)
+
     t = re.sub(rf'\s*{WRAP_ESC}\s*', ' ', t)
 
-    # Final tidy of excessive spaces at line starts/ends
+    # Removing excessive spaces at line starts/ends
     t = re.sub(r'[ \t]+\n', '\n', t)
     t = re.sub(r'\n[ \t]+', '\n', t)
 
@@ -102,10 +103,8 @@ class Scraper:
         if not main:
             return ""
 
-        # --- NEW: structure-preserving extraction + boundary-aware reflow ---
         raw = _text_from_dom(main)
 
-        # Don’t strip/flatten here; preserve blank lines as paragraphs.
         cleaned = _reflow(raw)
         return cleaned
     
