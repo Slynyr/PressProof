@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup, NavigableString, Tag
 from urllib.parse import urljoin
+from dataclasses import dataclass
 import unicodedata
 import re
 import requests
@@ -83,6 +84,7 @@ def _reflow(raw: str) -> str:
 class Scraper:
     def __init__(self, args):
         self.args = args
+        self.latestSoup = None
 
     def _fetch_soup(self, url: str) -> BeautifulSoup:
         headers = {"User-Agent": getattr(self.args, "useragent", "Mozilla/5.0")}
@@ -93,13 +95,14 @@ class Scraper:
         except Exception:
             return BeautifulSoup(r.text, "html.parser")
 
-    def getPageContent(self, url: str) -> str:
-        soup = self._fetch_soup(url)
+    def indexPage(self, url: str): 
+        self.latestSoup = self._fetch_soup(url)
 
+    def getCurrentPageContent(self) -> str:
         # Prefer main content region; fallback to role/main/body
-        main = soup.select_one("article .entry-content")
+        main = self.latestSoup.select_one("article .entry-content")
         if not main:
-            main = soup.select_one('[role="main"]') or soup.select_one("main") or soup.body
+            main = self.latestSoup.select_one('[role="main"]') or self.latestSoup.select_one("main") or self.latestSoup.body
         if not main:
             return ""
 
@@ -109,33 +112,30 @@ class Scraper:
         return cleaned
     
     
-    def getPageTitle(self, url: str) -> str | None:
-        soup = self._fetch_soup(url)
-        h1 = soup.select_one("article h1.entry-title")
+    def getCurrentPageTitle(self) -> str | None:
+        h1 = self.latestSoup.select_one("article h1.entry-title")
         if h1 and h1.get_text(strip=True):
             return h1.get_text(strip=True)
         
-        title_tag = soup.title
+        title_tag = self.latestSoup.title
         if title_tag and title_tag.string:
             return title_tag.string.strip()
         
         return None
 
-    def getNextPageURL(self, url: str):
-        soup = self._fetch_soup(url)
-
+    def getCurrentNextPageURL(self, url: str):
         # Search by <link> with rel=next---
-        link_tag = soup.select_one('link[rel="next"]')
+        link_tag = self.latestSoup.select_one('link[rel="next"]')
         if link_tag and link_tag.get("href"):
             return urljoin(url, link_tag["href"])
 
         # Search by <a> with rel=next---
-        a_rel_next = soup.select_one('a[rel~="next"]')
+        a_rel_next = self.latestSoup.select_one('a[rel~="next"]')
         if a_rel_next and a_rel_next.get("href"):
             return urljoin(url, a_rel_next["href"])
 
         # Search by content
-        for a in soup.find_all("a"):
+        for a in self.latestSoup.find_all("a"):
             text = (a.get_text(strip=True) or "").lower()
             if text.startswith("next"):
                 href = a.get("href")
@@ -143,7 +143,7 @@ class Scraper:
                     return urljoin(url, href)
 
         # Search by .nav-links
-        nav_next = soup.select_one(".nav-links a, nav a")
+        nav_next = self.latestSoup.select_one(".nav-links a, nav a")
         if nav_next and nav_next.get("href"):
             label = (nav_next.get_text(strip=True) or "").lower()
             if label.startswith("next"):

@@ -1,0 +1,43 @@
+====================================================================================================================================================
+| A Short History of the Web – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/history-of-the-web/ |
+Error: The Internet went online in the late 1980’s | Issue: Incorrect use of apostrophe in '1980’s'; should be '1980s'.
+Error: The internet consisted mostly of a collection of text-based services | Issue: Inconsistent capitalization of 'internet'; should be 'Internet'.
+Error: The Hyper-text Transfer Protocol (HTTP) that underlines web communication | Issue: Incorrect hyphenation in 'Hyper-text'; should be 'Hypertext'.
+Error: The 1990’s Boom | Issue: Incorrect use of apostrophe in '1990’s'; should be '1990s'.
+Error: A popular animation of Duke, the Java mascot, slowly tumbling across web pages that used to be static blew everyone away | Issue: Awkward phrasing; consider rephrasing for clarity.
+Error: the term Web 2.0 refers to the proliferation of websites based on user-generated content (a.k.a. social media sites) that began in the early 2000’s | Issue: Incorrect use of apostrophe in '2000’s'; should be '2000s'.
+Error: Myspace, YouTube, and Facebook were early examples of successful Web 2.0 sites. sites. | Issue: Repetition of the word 'sites.'
+Error: The term Mobile First Design was coined in 2009 to popularize the idea of designing with mobile users in mind. | Issue: Inconsistent capitalization of 'Mobile First Design'; should be 'Mobile First design'.
+Error: The term Responsive Web Design was coined in 2011 to popularize the use of CSS3 Media Queries | Issue: Inconsistent capitalization of 'Responsive Web Design'; should be 'Responsive web design'.
+Error: The most recent major update to PHP was version 8, released in 2020. | Issue: Inconsistent capitalization of 'PHP'; should be 'Php'.
+======================================================================================================================================================
+| Get Your Own Web Server – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/get-your-own-web-server/ |
+Error: Relate your machine’s local file structure to a the structure of a URL. | Issue: Redundant article 'a' before 'the'.
+Error: On a windows computer, you’ll probably find this in C:/xampp/htdocs, or wherever you installed XAMPP. | Issue: Incorrect capitalization of 'windows'; should be 'Windows'.
+Error: If you look in that folder, you’ll see an index.html file. | Issue: Inconsistent file extension casing; should be 'index.HTML' for consistency with previous mention.
+Error: ``` <!doctype html> <html> <head> <meta charset=utf-8> <title>Hello!</title> </head> <body> <p>Hello, World!</p> </body> </html> ``` | Issue: Incorrect casing of 'doctype'; should be 'DOCTYPE'.
+============================================================================================================================================
+| The Anatomy of a URL – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/anatomy-of-a-url/ |
+Error: the web server . Virtually all public web sites use this protocol now. | Issue: Extra space before the period.
+Error: but it’s not safe for anything else. But usually developers do not have to worry about this. | Issue: Repetitive use of 'but' at the beginning of consecutive sentences.
+Error: you’re locating a file directly from hard drive. | Issue: Missing article 'the' before 'hard drive'.
+Error: the distinction between the http protocol and the file scheme in an address will become important in Programming on the Server Side. | Issue: Inconsistent capitalization of 'http'; should be 'HTTP'.
+Error: the data includes text that was typed into a google search bar. | Issue: Inconsistent capitalization of 'google'; should be 'Google'.
+================================================================================================================================================
+| The User Interface – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/part/part-2-the-user-interface/ |
+Error: In this section , you’ll learn the basics of HTML | Issue: Extra space before the comma
+Error: but they’re not programming languages. | Issue: Inconsistent use of contractions; consider using 'they are' for formality
+Error: Look for DIY (Do It Yourself) boxes like this throughout this text. | Issue: Inconsistent use of parentheses; consider using 'Do-It-Yourself' for clarity
+Error: Full Stack Web Development for Beginners Copyright © 2025 by Sam Scott | Issue: Inconsistent capitalization; 'Full Stack' should be 'full stack' for consistency
+============================================================================================================================================
+| HTML for Structure – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/html-for-structure/ |
+Error: describing exactly how a computational problem should be solved | Issue: Incorrect verb form; should be 'describe' instead of 'describing'.
+Error: the `</strong>` tag should come before `</p>` | Issue: Incorrect nesting example; should be '<strong>...</strong><p>...</p>' instead of '<p>...</p></strong>'.
+Error: inside the paragraph element is an emphasis element `<strong>`. | Issue: Incorrect capitalization; 'inside' should be capitalized as 'Inside'.
+Error: the contents of the html, element are usually not indented. | Issue: Incorrect punctuation; 'html,' should be 'html element'.
+Error: The `<p> ... </p>` tags are used to create paragraph elements. If you want to create heading elements , you can use the tags `<h1> ... </h1>` | Issue: Extra space before the comma in 'elements ,'.
+==================================================================================================================================
+| CSS for Style – Full Stack Web Development for Beginners | https://ecampusontario.pressbooks.pub/webdev/chapter/css-for-style/ |
+Error: CSS Stands for Cascading StyleSheets. | Issue: Incorrect capitalization of 'StyleSheets'. It should be 'Stylesheets'.
+Error: note that there should be no spaces between the number and the unit. | Issue: The first word 'note' should be capitalized.
+Error: to make it look like an old-school amber monitor from the early 80’s. | Issue: The apostrophe in '80’s' should be replaced with a straight apostrophe (80's).

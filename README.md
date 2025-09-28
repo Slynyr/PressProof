@@ -1,6 +1,6 @@
 ![CLI Render](assets/uirender.png)
 # PressProof
-PressProof is a command-line tool proofreading pressbook books. Given the a starting page URL, pressbook automatically crawls through each consecutive page, extracting text and identifying errors using an LLM of choice (Restricted to OpenAI). Results are logged in realtime to a log file containing each error, the reason it was flagged, and their solutions!
+PressProof is a command-line tool designed for proofreading pressbook books. Given the a starting page URL, pressbook automatically crawls through each consecutive page, extracting text and identifying errors using an LLM of choice (restricted to OpenAI). Results are logged in realtime to a log file containing each error, the reason it was flagged, and their solutions!
 
 ## Installation & Configuration
 Assuming you have python installed, run:
@@ -22,7 +22,7 @@ pressproof --url <Starting page URL>
 Scanning a pressbook with maximum depth depth and a custom LLM condition: 
 ```
 pressproof --url <Starting page URL> --maddepth 10 --llmcondition <Custom condition>
-pressproof --url <Starting page URL> --llmcondition "Ignore grammatical mistakes involving apostrophes" 
+pressproof --url https://ecampusontario.pressbooks.pub/auditinginformationsystems/chapter/0101/ --maxdepth 10 --llmcondition "Ignore grammatical mistakes involving apostrophes" 
 ```
 
 PressProof offers many more arguments that can be configured that were not directly covered above. If you would like to learn more about them and their usage, run ```pressproof --help``` in your terminal.
@@ -36,9 +36,6 @@ Pressproof generates a log file in the current working directory on the fly, whi
 | <Page Title> | <Page URL>
 Error: <Original Text> | Issue : <Explenation and Solution to error>
 ```
-
-## Known Issues
-- False Positives: Inline styling in some text books can cause the LLM to incorrectly identify errors with regards to extra or missing spaces
 
 ## Risk Notice ⚠️
 PressProof makes use of web scraping in order to pull information from each page. While Pressbook does not explicitely prohibit web scraping in their terms of service, site policies may change, and access could be restricted at any time. 

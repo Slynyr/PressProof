@@ -35,8 +35,10 @@ def proofRead():
     #initializing status bar
     mStatusBar.start(f"Proofreading target: {pageURL}")
 
+    mScraper.indexPage(pageURL)
+
     if (mArgs.dumppage):
-        content = mScraper.getPageContent(mArgs.url)
+        content = mScraper.getCurrentPageContent()
         mLogManager.logString(content=content)
         os._exit(0)
 
@@ -45,17 +47,17 @@ def proofRead():
             reportFinish(True, errorCount, startTime)
             break
 
-        #print(f"{Fore.CYAN}[Scanning] {Fore.WHITE} Page {pageCount + 1}")
         mStatusBar.set_text(f"Proofreading target: {pageURL}")
 
-        content = mScraper.getPageContent(pageURL)
+        mScraper.indexPage(pageURL)
+        content = mScraper.getCurrentPageContent()
 
         errors = mLLMHandler.getTextErrors(content)
 
         if len(errors) > 0: 
             mStatusBar.print_above(f"• Found {Constants.COLOR_ORANGE}{len(errors)} errors{Fore.WHITE} on page {pageCount}")
 
-            title = mScraper.getPageTitle(pageURL)
+            title = mScraper.getCurrentPageTitle()
 
             mLogManager.logErrors(pageURL, title, errors)
 
@@ -64,7 +66,7 @@ def proofRead():
             mStatusBar.print_above(f"• No errors found on page {pageCount}.")
 
 
-        pageURL = mScraper.getNextPageURL(pageURL)
+        pageURL = mScraper.getCurrentNextPageURL(pageURL)
         pageCount += 1
 
         if not pageURL:
@@ -73,12 +75,10 @@ def proofRead():
 
 def reportFinish(isInterrupted: bool, errorCount: int, startTime):
     if isInterrupted:
-        #print(f"{Fore.GREEN}[Finished] {Fore.WHITE}Reached depth limit. Total tokens used: {mLLMHandler.tokenCount}")
-        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached depth limit. Total tokens used: {mLLMHandler.tokenCount}")
+        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached depth limit.")
         reportStats(errorCount, startTime)
     else:
-        #print(f"{Fore.GREEN}[Finished] {Fore.WHITE}Reached end of pressbook. Total tokens used: {mLLMHandler.tokenCount}")
-        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached end of pressbook. Total tokens used: {mLLMHandler.tokenCount}")
+        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached end of pressbook.")
         reportStats(errorCount, startTime)
 
 def reportStats(errorCount, startTime):
