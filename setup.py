@@ -4,8 +4,8 @@ from pathlib import Path
 readme_path = Path(__file__).with_name("README.md")
 description = readme_path.read_text(encoding="utf-8")
 description = description.replace(
-    "assets/example.png",
-    "https://github.com/Slynyr/PressProof/raw/main/assets/example.png"
+    "assets/uirender.png",
+    "https://github.com/Slynyr/PressProof/raw/main/assets/uirender.png"
 )
 
 setup(

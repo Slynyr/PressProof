@@ -1,4 +1,4 @@
-![CLI Render](assets/example.png)
+![CLI Render](assets/uirender.png)
 # PressProof
 PressProof is a command-line tool proofreading pressbook books. Given the a starting page URL, pressbook automatically crawls through each consecutive page, extracting text and identifying errors using an LLM of choice (Restricted to OpenAI). Results are logged in realtime to a log file containing each error, the reason it was flagged, and their solutions!
 

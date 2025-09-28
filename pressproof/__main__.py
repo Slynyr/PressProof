@@ -72,10 +72,10 @@ def proofRead():
 
 def reportFinish(isInterrupted: bool, errorCount: int, startTime):
     if isInterrupted:
-        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached depth limit. Total tokens used: {mLLMHandler.tokenCount}")
+        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached depth limit")
         reportStats(errorCount, startTime)
     else:
-        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached end of pressbook. Total tokens used: {mLLMHandler.tokenCount}")
+        mStatusBar.stop(f"{Constants.COLOR_ORANGE}[Finished] {Fore.WHITE}Reached end of pressbook")
         reportStats(errorCount, startTime)
 
 def reportStats(errorCount, startTime):
