@@ -6,7 +6,7 @@ class LogManager:
         pass
 
     def logErrors(self, pageURL, title, errors):
-        with open(f"{self.args.filename}.txt", "a") as file:
+        with open(f"{self.args.filename}.txt", "a", encoding="utf-8") as file:
             logHeader = f"| {title} | {pageURL} |"
             logSpacer = "=" * len(logHeader)
             file.writelines(f"{logSpacer}\n{logHeader}\n")
@@ -18,7 +18,7 @@ class LogManager:
                 file.writelines(f"Error: {snippet} | Issue: {issue}\n") 
         
     def logString(self, content):
-        with open(f"{self.args.filename}.txt", "w") as file:
+        with open(f"{self.args.filename}.txt", "w", encoding="utf-8") as file:
             file.writelines(content)
 
 

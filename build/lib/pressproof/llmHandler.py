@@ -8,11 +8,6 @@ base = (
   "You are a precise proofreading assistant that is looking major spelling mistakes or critical errors in a textbook page.\n"
 )
 
-rules = (
-  "HARD RULES (must follow):\n"
-  "- Only flag issues that change meaning or are clearly wrong.\n"
-)
-
 output = (
   "Return ONLY JSON with a top-level key 'errors' (array of objects with 'snippet' and 'issue')."
 )
@@ -34,7 +29,6 @@ class LLMHandler:
                 response_format={"type": "json_object"},
                 messages = [
                     {"role": "system", "content": base},
-                    {"role": "system", "content": rules},
                     {"role": "system", "content": self.args.llmcondition or ""},
                     {"role": "system", "content": output},
                     {"role": "user", "content": f"Text to check:\n\n{payload}"},
