@@ -15,6 +15,39 @@ BLOCK_LIKE = {
     "blockquote","pre","figure","figcaption","hr"
 }
 
+
+_MOJIBAKE_SIGNS = re.compile(r"(?:Ã.|Â.|â€|â€™|â€œ|â€“|â€”|â€¢|â€¦)")
+
+_INVISIBLES = re.compile(r"[\u200B-\u200F\u202A-\u202E\u2060\uFEFF\u00AD]")
+
+_CODE_SPANS = re.compile(r"(?s)(```.*?```|`[^`\n]*`)")
+
+def _maybe_fix_mojibake(s: str) -> str:
+    if not _MOJIBAKE_SIGNS.search(s):
+        return s
+    try:
+        return s.encode("cp1252").decode("utf-8")
+    except Exception:
+        return s
+
+def _reflow_segment(t: str) -> str:
+    t = _maybe_fix_mojibake(t)                              
+    t = unicodedata.normalize("NFKC", t)                    
+    t = t.replace("\u00A0", " ")                            
+    t = t.replace("\r\n", "\n").replace("\r", "\n")         
+    t = _INVISIBLES.sub("", t)                             
+    t = re.sub(r"[ \t]+\n", "\n", t)                        
+    t = re.sub(r"\n{3,}", "\n\n", t)                        
+
+    t = re.sub(r"([^\n])\n(?!\n)([^\n])", rf"\1{WRAP}\2", t)
+    t = re.sub(rf"{WRAP_ESC}\s+([.,;:!?%)\]\}}])", r"\1", t)
+    t = re.sub(rf";{WRAP_ESC}\s+\.", ";.", t)
+    t = re.sub(rf"\s*{WRAP_ESC}\s*", " ", t)
+
+    t = re.sub(r"[ \t]+\n", "\n", t)
+    t = re.sub(r"\n[ \t]+", "\n", t)
+    return t
+
 def _text_from_dom(root: Tag) -> str:
     parts = []
 
@@ -26,60 +59,59 @@ def _text_from_dom(root: Tag) -> str:
         if not isinstance(node, Tag):
             return
 
+        # Skip non content
+        if node.name in {"script", "style"}:
+            return
+
+        # Treat <br> as a line break
+        if node.name == "br":
+            parts.append("\n")
+            return
+
         is_block = node.name in BLOCK_LIKE
 
-        # Add a paragraph separator before entering a block
+        # Paragraph separator before entering a block
         if is_block and parts and not parts[-1].endswith("\n\n"):
             parts.append("\n\n")
 
         if node.name == "code":
-            # Keep inline code text
-            parts.append(f"`{node.get_text()}`")
+            parts.append(f"`{node.get_text()}`")            
         elif node.name == "pre":
-            # Preserve preformatted text exactly
-            parts.append("```\n" + node.get_text() + "\n```")
+            code = node.get_text()
+            classes = node.get("class") or []
+            lang = None
+            for cls in classes:
+                m = re.match(r"(?:language|lang)-(\w+)", cls)
+                if m:
+                    lang = m.group(1)
+                    break
+            fence = f"```{lang}\n" if lang else "```\n"
+            parts.append(fence + code + "\n```")
         else:
             for child in node.children:
                 walk(child)
 
-        # Add a separator after a block
+        # Paragraph separator after a block
         if is_block and (not parts or not parts[-1].endswith("\n\n")):
             parts.append("\n\n")
 
     walk(root)
     text = "".join(parts)
-
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
 def _reflow(raw: str) -> str:
-    t = unicodedata.normalize("NFKC", raw)
-    t = t.replace('\u00A0', ' ').replace('\uFFFD', '')
-    t = t.replace('\r\n', '\n').replace('\r', '\n')
+    out = []
+    last = 0
+    for m in _CODE_SPANS.finditer(raw):
+        out.append(_reflow_segment(raw[last:m.start()]))
+        out.append(m.group(0))
+        last = m.end()
 
-    # Trim trailing spaces on lines
-    t = re.sub(r'[ \t]+\n', '\n', t)
+    # Trailing non code
+    out.append(_reflow_segment(raw[last:]))
 
-    # Normalize paragraph breaks
-    t = re.sub(r'\n{3,}', '\n\n', t)
-
-    # Mark single newlines between nonblank chars as soft wraps
-    t = re.sub(r'([^\n])\n(?!\n)([^\n])', rf'\1{WRAP}\2', t)
-
-    # If punctuation follows immediately after a wrap boundary, drop the space.
-    t = re.sub(rf'{WRAP_ESC}\s+([.,;:!?%)\]\}}])', r'\1', t)
-
-    t = re.sub(rf';{WRAP_ESC}\s+\.', ';.', t)
-
-    t = re.sub(rf'`\s*{WRAP_ESC}\s*([.,;:!?])', r'`\1', t)
-
-    t = re.sub(rf'\s*{WRAP_ESC}\s*', ' ', t)
-
-    # Removing excessive spaces at line starts/ends
-    t = re.sub(r'[ \t]+\n', '\n', t)
-    t = re.sub(r'\n[ \t]+', '\n', t)
-
-    return t.strip()
+    return "".join(out).strip()
 
 class Scraper:
     def __init__(self, args):
@@ -99,7 +131,6 @@ class Scraper:
         self.latestSoup = self._fetch_soup(url)
 
     def getCurrentPageContent(self) -> str:
-        # Prefer main content region; fallback to role/main/body
         main = self.latestSoup.select_one("article .entry-content")
         if not main:
             main = self.latestSoup.select_one('[role="main"]') or self.latestSoup.select_one("main") or self.latestSoup.body

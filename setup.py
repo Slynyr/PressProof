@@ -10,7 +10,7 @@ description = description.replace(
 
 setup(
     name="PressProof",
-    version="1.1.2", 
+    version="1.2.0", 
     packages=find_packages(),
     install_requires=["colorama", "openai", "beautifulsoup4", "requests"],
     entry_points={
