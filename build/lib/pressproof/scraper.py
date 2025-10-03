@@ -15,6 +15,50 @@ BLOCK_LIKE = {
     "blockquote","pre","figure","figcaption","hr"
 }
 
+# --- Helpers ---
+
+# Quick heuristic: only try to "un-mojibake" if telltale trigrams appear.
+_MOJIBAKE_SIGNS = re.compile(r"(?:Ã.|Â.|â€|â€™|â€œ|â€“|â€”|â€¢|â€¦)")
+
+# All the usual invisible format chars + soft hyphen + BOM
+_INVISIBLES = re.compile(r"[\u200B-\u200F\u202A-\u202E\u2060\uFEFF\u00AD]")
+
+# Match fenced code blocks or inline code spans
+_CODE_SPANS = re.compile(r"(?s)(```.*?```|`[^`\n]*`)")
+
+def _maybe_fix_mojibake(s: str) -> str:
+    # Try Windows-1252 -> UTF-8 reversal only if signatures are present
+    if not _MOJIBAKE_SIGNS.search(s):
+        return s
+    try:
+        return s.encode("cp1252").decode("utf-8")
+    except Exception:
+        # If the heuristic fails, return original unchanged
+        return s
+
+def _reflow_segment(t: str) -> str:
+    # This runs ONLY on non-code segments
+    t = _maybe_fix_mojibake(t)                              # 0) undo mojibake if present
+    t = unicodedata.normalize("NFKC", t)                    # 1) normalize safely
+    t = t.replace("\u00A0", " ")                            # 2) NBSP -> space
+    t = t.replace("\r\n", "\n").replace("\r", "\n")         # 3) normalize newlines
+    t = _INVISIBLES.sub("", t)                              # 4) strip zero-widths, BOM, soft hyphen
+    t = re.sub(r"[ \t]+\n", "\n", t)                        # 5) trim right
+    t = re.sub(r"\n{3,}", "\n\n", t)                        # 6) collapse big gaps
+
+    # 7) mark soft wraps and then resolve them (your original logic)
+    t = re.sub(r"([^\n])\n(?!\n)([^\n])", rf"\1{WRAP}\2", t)
+    t = re.sub(rf"{WRAP_ESC}\s+([.,;:!?%)\]\}}])", r"\1", t)
+    t = re.sub(rf";{WRAP_ESC}\s+\.", ";.", t)
+    t = re.sub(rf"\s*{WRAP_ESC}\s*", " ", t)
+
+    # Final tidy
+    t = re.sub(r"[ \t]+\n", "\n", t)
+    t = re.sub(r"\n[ \t]+", "\n", t)
+    return t
+
+# --- Your functions with safe tweaks ---
+
 def _text_from_dom(root: Tag) -> str:
     parts = []
 
@@ -26,60 +70,66 @@ def _text_from_dom(root: Tag) -> str:
         if not isinstance(node, Tag):
             return
 
+        # Skip non-content
+        if node.name in {"script", "style"}:
+            return
+
+        # Treat <br> as a line break
+        if node.name == "br":
+            parts.append("\n")
+            return
+
         is_block = node.name in BLOCK_LIKE
 
-        # Add a paragraph separator before entering a block
+        # Paragraph separator before entering a block
         if is_block and parts and not parts[-1].endswith("\n\n"):
             parts.append("\n\n")
 
         if node.name == "code":
-            # Keep inline code text
-            parts.append(f"`{node.get_text()}`")
+            parts.append(f"`{node.get_text()}`")            # inline code, keep text
         elif node.name == "pre":
-            # Preserve preformatted text exactly
-            parts.append("```\n" + node.get_text() + "\n```")
+            # Preserve preformatted code; include language if present (optional)
+            code = node.get_text()
+            classes = node.get("class") or []
+            lang = None
+            for cls in classes:
+                m = re.match(r"(?:language|lang)-(\w+)", cls)
+                if m:
+                    lang = m.group(1)
+                    break
+            fence = f"```{lang}\n" if lang else "```\n"
+            parts.append(fence + code + "\n```")
         else:
             for child in node.children:
                 walk(child)
 
-        # Add a separator after a block
+        # Paragraph separator after a block
         if is_block and (not parts or not parts[-1].endswith("\n\n")):
             parts.append("\n\n")
 
     walk(root)
     text = "".join(parts)
-
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
 def _reflow(raw: str) -> str:
-    t = unicodedata.normalize("NFKC", raw)
-    t = t.replace('\u00A0', ' ').replace('\uFFFD', '')
-    t = t.replace('\r\n', '\n').replace('\r', '\n')
+    """
+    Reflow outside code; leave code (inline and fenced) untouched.
+    Also undo mojibake opportunistically and strip invisibles outside code.
+    """
+    out = []
+    last = 0
+    for m in _CODE_SPANS.finditer(raw):
+        # Non-code before the code span
+        out.append(_reflow_segment(raw[last:m.start()]))
+        # Code span itself unchanged
+        out.append(m.group(0))
+        last = m.end()
 
-    # Trim trailing spaces on lines
-    t = re.sub(r'[ \t]+\n', '\n', t)
+    # Trailing non-code
+    out.append(_reflow_segment(raw[last:]))
 
-    # Normalize paragraph breaks
-    t = re.sub(r'\n{3,}', '\n\n', t)
-
-    # Mark single newlines between nonblank chars as soft wraps
-    t = re.sub(r'([^\n])\n(?!\n)([^\n])', rf'\1{WRAP}\2', t)
-
-    # If punctuation follows immediately after a wrap boundary, drop the space.
-    t = re.sub(rf'{WRAP_ESC}\s+([.,;:!?%)\]\}}])', r'\1', t)
-
-    t = re.sub(rf';{WRAP_ESC}\s+\.', ';.', t)
-
-    t = re.sub(rf'`\s*{WRAP_ESC}\s*([.,;:!?])', r'`\1', t)
-
-    t = re.sub(rf'\s*{WRAP_ESC}\s*', ' ', t)
-
-    # Removing excessive spaces at line starts/ends
-    t = re.sub(r'[ \t]+\n', '\n', t)
-    t = re.sub(r'\n[ \t]+', '\n', t)
-
-    return t.strip()
+    return "".join(out).strip()
 
 class Scraper:
     def __init__(self, args):

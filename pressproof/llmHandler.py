@@ -29,7 +29,7 @@ class LLMHandler:
                 response_format={"type": "json_object"},
                 messages = [
                     {"role": "system", "content": base},
-                    {"role": "system", "content": self.args.llmcondition or ""},
+                    {"role": "system", "content": f"HARD RULES (MUST FOLLOW):\n{self.args.llmcondition}" if self.args.llmcondition else ""},
                     {"role": "system", "content": output},
                     {"role": "user", "content": f"Text to check:\n\n{payload}"},
                 ],

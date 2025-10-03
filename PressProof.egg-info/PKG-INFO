@@ -1,6 +1,6 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: PressProof
-Version: 1.1.2
+Version: 1.2.0
 Description-Content-Type: text/markdown
 Requires-Dist: colorama
 Requires-Dist: openai
@@ -30,6 +30,8 @@ Scanning a pressbook with default configuration:
 ```
 pressproof --url <Starting page URL>
 ```
+**Sidenote:** If you pass in the table of contents as the first page, PressProof will not automatically detect the next page. Only pass in the first page onwards. 
+
 
 Scanning a pressbook with maximum depth depth and a custom LLM condition: 
 ```
@@ -39,6 +41,14 @@ pressproof --url https://ecampusontario.pressbooks.pub/auditinginformationsystem
 
 PressProof offers many more arguments that can be configured that were not directly covered above. If you would like to learn more about them and their usage, run ```pressproof --help``` in your terminal.
 
+## Custom Rules and LLM Conditions
+If you would like to tune how you strict PressProof is, ignore certain types or errors, or only search for specific issues, PressProof provides an ```--llmcondition``` parameter. It is important to not however, that due to context window limitations, the default **gpt-4o-mini** model has a hard time following custom rules/conditions. It is recommended that you use a more advanced model such as **gpt-4.1** via ```--model "gpt-4.1"```. Do note that this does bring the price/proofread up significantly. 
+
+As shown in the example below, each condition should be seperated by a return carraige ```\n```. 
+```
+PressProof --url https://ecampusontario.pressbooks.pub/auditinginformationsystems/chapter/0101/ --llmcondition "ONLY flag issues that change meaning or area clearly wrong\n IGNORE ALL issues about punctuation of dates, years, or decades (e.g. 1990s, 1990's)"
+```
+
 ## Outputs
 Pressproof generates a log file in the current working directory on the fly, which means you can safely interrupt the proof read at any moment. The default output is written to ```pplog.txt``` however, a custom filename can be set using the ```--filename``` argument. 
 
@@ -46,7 +56,7 @@ Pressproof generates a log file in the current working directory on the fly, whi
 ```
 ===========================
 | <Page Title> | <Page URL>
-Error: <Original Text> | Issue : <Explenation and Solution to error>
+Quote: <Original Text> | Issue : <Explenation and Solution to error>
 ```
 
 ## Risk Notice ⚠️

@@ -15,7 +15,7 @@ class LogManager:
                 snippet = error.get("snippet", "")
                 issue = error.get("issue", "")
 
-                file.writelines(f"Error: {snippet} | Issue: {issue}\n") 
+                file.writelines(f"Quote: {snippet} | Issue: {issue}\n") 
         
     def logString(self, content):
         with open(f"{self.args.filename}.txt", "w", encoding="utf-8") as file:
