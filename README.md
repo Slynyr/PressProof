@@ -30,7 +30,7 @@ pressproof --url https://ecampusontario.pressbooks.pub/auditinginformationsystem
 PressProof offers many more arguments that can be configured that were not directly covered above. If you would like to learn more about them and their usage, run ```pressproof --help``` in your terminal.
 
 ## Custom Rules and LLM Conditions
-If you would like to tune how you strict PressProof is, ignore certain types or errors, or only search for specific issues, PressProof provides an ```--llmcondition``` parameter. It is important to not however, that due to context window limitations, the default **gpt-4o-mini** model has a hard time following custom rules/conditions. It is recommended that you use a more advanced model such as **gpt-4.1** via ```--model "gpt-4.1"```. Do note that this does bring the price/proofread up significantly. 
+If you would like to tune how you strict PressProof is, ignore certain types or errors, or only search for specific issues, PressProof provides an ```--llmcondition``` parameter. It is important to note however, that due to context window limitations, the default **gpt-4o-mini** model has a hard time following custom rules/conditions. It is recommended that you use a more advanced model such as **gpt-4.1** via ```--model "gpt-4.1"```. This does however bring up the cost/proofread significantly. 
 
 As shown in the example below, each condition should be seperated by a return carraige ```\n```. 
 ```
