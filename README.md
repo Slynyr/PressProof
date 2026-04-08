@@ -9,7 +9,7 @@ An open source proofreading tool designed for proofreading pressbook books. Give
 ## Setup and Usage
 Download the respective build for your operating system from the latest PressProof release. Upon launching the app, you will be given the option to create a new audit. Before we can do so, please first navigate to `Manage API Keys` and add the respecive API keys needed for your LLM of choice. After doing so, you can simply provide the [base URL](https://ecampusontario.pressbooks.pub/businessfuncdn/) to any PressBook in order to begin an audit. Note that you can select the page range as well as provide extra instructions to the LLM for the scan (keep minimal to preserve context).
 
-### Models
+### Mode;s
 Pressproof now offers a range of models from both OpenAI and Claude, each with their own benefits as detailed below. 
 
 
@@ -19,6 +19,9 @@ Pressproof now offers a range of models from both OpenAI and Claude, each with t
 | OpenAI | GPT-4o Mini | Works well and is extremely cost effective however, it may not be as thourough as the non-mini model. | $ | |
 | Claude |  Sonnet 4.6 | Proved to provide higher level of detail in comparison to OpenAI models however, this model was significantly more expensive to run in comparison to GPT-4o  | $$$ | |
 | Claude | Haiku 4.5 | Proved to provide higher level of detail in comparison to OpenAI models while still remaining as cost effective as GPT-4o Mini | $ | ⭐ |
+
+### Exporting/Importing Audits
+PressProof importing and exporting audits. In order to export an audit, open it inside PressProof, and select "Export Audit". This will export the audit as a JSON file which can be imported via the import button located on the top right of the home page. Note that the JSON also maintains changes to the status of each issue.  
 
 ## Build PressProof
 Running and building the app from source can be done like so.
