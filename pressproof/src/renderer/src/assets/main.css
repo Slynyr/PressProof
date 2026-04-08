@@ -1,0 +1,27 @@
+@import './base.css';
+@import "tailwindcss";
+
+@theme {
+  --color-background: #171717;
+  --color-surface: #222;
+  --color-surface-light: #252540;
+  --color-surface-hover: #272727;
+  --color-border: #252525;
+  --color-border-light: green;
+
+  --color-accent: #7C3AED;
+  --color-accent-hover: #6d28d9; /** adjust */ 
+
+  --color-critical: #B35D5C;
+  --color-warning: #eab308;
+  --color-info: #248761;
+
+  --color-text-primary: #F0F0F0;
+  --color-text-secondary: #696E75;
+  --color-text-muted: #858C95;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
