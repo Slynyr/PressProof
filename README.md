@@ -44,4 +44,4 @@ npm run build:win
 ```
 
 ## Legacy CLI Tool
-PressProof was originally a command line tool which can now be found here. Although the feature set and functionality is similar, the CLI version does not have some of the performance and accuracy improvements that this version has.
+PressProof was originally a command line tool which can now be found [here](https://github.com/Slynyr/PressProof-CLI). Although the feature set and functionality is similar, the CLI version does not have some of the performance and accuracy improvements that this version has.
