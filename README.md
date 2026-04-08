@@ -1,6 +1,6 @@
 
-![Home Page](images/homepage.png)
-![Audit Page](images/auditpage.png)
+![Home Page](documentation/homepage.png)
+![Audit Page](documentation/auditpage.png)
 
 # PressProof
 
