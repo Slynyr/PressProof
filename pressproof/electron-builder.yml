@@ -12,7 +12,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: pressproof
+  executableName: PressProof
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
